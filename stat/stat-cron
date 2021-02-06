@@ -1,40 +1,40 @@
 #Rabbit events
-*1/1 * * * * curl http://localhost/rabbit/sent2CH.php -kv >> /dev/stdout 2>&1 
-*1/1 * * * * curl http://localhost/rabbit/events2CH.php -kv >> /dev/stdout 2>&1 
-*1/1 * * * * curl http://localhost/rabbit/trans_events2CH.php -kv >> /dev/stdout 2>&1 
-*1/1 * * * * curl http://localhost/rabbit/events2webhooks.php -kv >> /dev/stdout 2>&1 
+*1/1 * * * * curl -H 'Connection: close' http://localhost/rabbit/sent2CH.php -kv >> /dev/stdout 2>&1 
+*1/1 * * * * curl -H 'Connection: close' http://localhost/rabbit/events2CH.php -kv >> /dev/stdout 2>&1 
+*1/1 * * * * curl -H 'Connection: close' http://localhost/rabbit/trans_events2CH.php -kv >> /dev/stdout 2>&1 
+*1/1 * * * * curl -H 'Connection: close' http://localhost/rabbit/events2webhooks.php -kv >> /dev/stdout 2>&1 
 
 #Delivery
-*1/1 * * * * curl http://localhost/mailerq/bounced.php -kv >> /dev/stdout 2>&1 
-*1/1 * * * * curl http://localhost/mailerq/complained.php -kv >> /dev/stdout 2>&1 
-*1/1 * * * * curl http://localhost/mailerq/delivered.php -kv >> /dev/stdout 2>&1 
+*1/1 * * * * curl -H 'Connection: close' http://localhost/mailerq/bounced.php -kv >> /dev/stdout 2>&1 
+*1/1 * * * * curl -H 'Connection: close' http://localhost/mailerq/complained.php -kv >> /dev/stdout 2>&1 
+*1/1 * * * * curl -H 'Connection: close' http://localhost/mailerq/delivered.php -kv >> /dev/stdout 2>&1 
 
 #Autocampaigns
-*/5 * * * * curl http://localhost/make_campaign_2.php -kv >> /dev/stdout 2>&1 
-01 00 * * * curl http://localhost/make_campaign.php -kv >> /dev/stdout 2>&1 
-*1/1 * * * * curl http://localhost/timer.php -kv >> /dev/stdout 2>&1 
-00 01 * * * curl http://localhost/wfqueue.php -kv >> /dev/stdout 2>&1 
-00 11 * * * curl http://localhost/reactivation.php -kv >> /dev/stdout 2>&1 
-*/60 * * * * curl http://localhost/rss.php -kv >> /dev/stdout 2>&1 
+*/5 * * * * curl -H 'Connection: close' http://localhost/make_campaign_2.php -kv >> /dev/stdout 2>&1 
+01 00 * * * curl -H 'Connection: close' http://localhost/make_campaign.php -kv >> /dev/stdout 2>&1 
+*1/1 * * * * curl -H 'Connection: close' http://localhost/timer.php -kv >> /dev/stdout 2>&1 
+00 01 * * * curl -H 'Connection: close' http://localhost/wfqueue.php -kv >> /dev/stdout 2>&1 
+00 11 * * * curl -H 'Connection: close' http://localhost/reactivation.php -kv >> /dev/stdout 2>&1 
+*/60 * * * * curl -H 'Connection: close' http://localhost/rss.php -kv >> /dev/stdout 2>&1 
 
 #Archive
-*/5 * * * * curl http://localhost/archive/archive_campaigns.php -kv >> /dev/stdout 2>&1 
-*/15 * * * * curl http://localhost/archive/archive_autocampaigns.php -kv >> /dev/stdout 2>&1 
-*/5 * * * * curl http://localhost/archive/archive_dashboard.php -kv >> /dev/stdout 2>&1 
-*/5 * * * * curl http://localhost/archive/archive_lists.php -kv >> /dev/stdout 2>&1 
-15 10 * * * curl http://localhost/archive/archive_total_members.php -kv >> /dev/stdout 2>&1 
-30 23 * * * curl http://localhost/archive/archive_cogort.php -kv >> /dev/stdout 2>&1 
+*/5 * * * * curl -H 'Connection: close' http://localhost/archive/archive_campaigns.php -kv >> /dev/stdout 2>&1 
+*/15 * * * * curl -H 'Connection: close' http://localhost/archive/archive_autocampaigns.php -kv >> /dev/stdout 2>&1 
+*/5 * * * * curl -H 'Connection: close' http://localhost/archive/archive_dashboard.php -kv >> /dev/stdout 2>&1 
+*/5 * * * * curl -H 'Connection: close' http://localhost/archive/archive_lists.php -kv >> /dev/stdout 2>&1 
+15 10 * * * curl -H 'Connection: close' http://localhost/archive/archive_total_members.php -kv >> /dev/stdout 2>&1 
+30 23 * * * curl -H 'Connection: close' http://localhost/archive/archive_cogort.php -kv >> /dev/stdout 2>&1 
 
 #Checkers
-*1/1 * * * * curl http://localhost/checkers/check_members.php -kv >> /dev/stdout 2>&1 
-*1/1 * * * * curl http://localhost/checkers/check_campaign.php -kv >> /dev/stdout 2>&1 
+*1/1 * * * * curl -H 'Connection: close' http://localhost/checkers/check_members.php -kv >> /dev/stdout 2>&1 
+*1/1 * * * * curl -H 'Connection: close' http://localhost/checkers/check_campaign.php -kv >> /dev/stdout 2>&1 
 
 
 #Options and Service
-*/5 * * * * curl http://localhost/service/clean_tasks.php >> /dev/stdout 2>&1
-*/5 * * * * curl http://localhost/service/resend_unopened.php >> /dev/stdout 2>&1
-*/60 * * * * curl http://localhost/service/drop_limits.php >> /dev/stdout 2>&1
-*/60 * * * * curl http://localhost/service/check_import.php >> /dev/stdout 2>&1
+*/5 * * * * curl -H 'Connection: close' http://localhost/service/clean_tasks.php >> /dev/stdout 2>&1
+*/5 * * * * curl -H 'Connection: close' http://localhost/service/resend_unopened.php >> /dev/stdout 2>&1
+*/60 * * * * curl -H 'Connection: close' http://localhost/service/drop_limits.php >> /dev/stdout 2>&1
+*/60 * * * * curl -H 'Connection: close' http://localhost/service/check_import.php >> /dev/stdout 2>&1
 
 #Delivery
-01 00 * * * curl http://localhost/service/warming.php >> /dev/stdout 2>&1
+01 00 * * * curl -H 'Connection: close' http://localhost/service/warming.php >> /dev/stdout 2>&1
