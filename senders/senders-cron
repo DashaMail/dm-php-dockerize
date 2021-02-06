@@ -1,0 +1,5 @@
+*/1 *   * * *   root    bash /var/www/html/dashamail-onpremise/bs/mailer.sh
+*/1 *   * * *   root    bash /var/www/html/dashamail-onpremise/bs/creator.sh
+*/1 *   * * *   root    bash /var/www/html/dashamail-onpremise/bs/manager.sh
+*/1 *   * * *   root	php -q /var/www/html/dashamail-onpremise/procscripts-new/router.php >> /dev/stdout 2>&1 &
+*/1 *   * * *   root	php -q /var/www/html/dashamail-onpremise/procscripts-new/moderator.php >> /dev/stdout 2>&1 &
